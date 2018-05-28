@@ -1,0 +1,124 @@
+Greetings!
+
+This is a simple program to view complex mappings of the (Gaussian)
+plane.  It is intended to give users a chance to quickly view how a
+complex function transforms a grid (cartesian or polar), and also give
+them an opportunity to see how it may transform some "custom shapes."
+
+This program uses (i.e. depends upon) the gtkmm libraries, so those
+may be necessary for compliation.
+
+As of right now this program is in development.  See the section at
+the bottom called "Known Bugs/ The Future" for more information.
+
+~~~~
+
+HOW TO USE THIS PROGRAM
+
+Upon running the program, you will see labels and corresponding entry
+boxes at the top.  Here is there explanation:
+
+forumula:
+	expression-string
+	Enter here a formula representing the complex function you
+	wish to map (the complex variable is 'z').  It is pretty
+	"standard" expression notation, and supports whatever
+	functions cmath supports for complex<double>.  The parser for
+	this was built fast and in a hurry, and was part of a
+	"learning experience," please see "Known Bugs/ The Future."
+
+res:
+	non-negative integer
+	"Resolution."  Each line will be broken up into $res many
+	smaller lines and then drawn upon transformation.  So, if your
+	curves are jagged, increase the "res."  If it is taking an
+	exorbitant amount of time to create the image, reduce the
+	"res."
+
+grid:
+	double
+	This represents the minimum and maximum value of the grid
+	which will be mapped.  Change the $formula to "z" to just look
+	at a boring grid.
+
+step:
+	double
+	The distance between gridlines.  I.e, if $grid = 10 and $step
+	= 1, then there will be horizontal and vertical gridlines
+	ranging from values -10 to 10, spaced 1 unit apart.
+
+~~~~
+
+After the entry boxes, there are three buttons, here is what they do:
+
+map:
+	Simply calculates the transformed grid/ custom lines and
+	displays them.
+
+clear:
+	Erases and user-drawn lines which have been previously drawn.
+
+animate:
+	Shows a simple homotopy between the grid/ user draw lines, and
+	their respective mappings (the homotopy is of type t*() +
+	(1-t)*()).  Note, all of the necessary images are
+	precalculated, so if you have a particularly dense $grid or
+	busy image, gnarly complex $formula, or high $res then it may
+	be a moment before anything starts happening (or a weak-ass
+	machine).
+
+~~~~
+
+HOW TO DRAW
+
+straight-line:
+	Right click the beginning, then the end.
+
+polygonal-arc:
+	Press the "left-control button" to enter what could be called
+	"smooth-drawing mode."  From this moment on, until you press
+	"left-control" again a polygonal-arc will be drawn that
+	follows your mouse.
+
+~~~~
+
+Known Bugs / The Future
+
+Formula Parser:
+	This may not be a perfect parser.  It seems to be working for
+	reasonable formulas, and hopefully works for whatever you have
+	in mind.  Note that as of right now it just kills the program
+	(with an assert) if there is an error in the formula.  This is
+	a "critical" issue that will be fixed as soon as I've achieved
+	whatever functionality I want.
+
+Sliders:
+	The parser was built with "sliders" in mind (paramters
+	adjustable on the fly), it's just a matter of me figuring out
+	how to implement them in gtkmm and doing it.  This isn't
+	really considered critical.
+
+Drawing: 
+	It's pretty hard to draw something while a $formula is present
+	in the entry box.  Right now what I do is just change the
+	formula to "z," draw what I want, then let 'er rip on
+	something interesting.  This is less than optimal, so a
+	solution will be devised eventually.  It would probably also
+	be nice to see what was originally drawn, perhaps optionally,
+	but this level of functionality will depend on what people who
+	end up using it want.
+
+Animation:
+	It would probably be nice to have a slider for "time," as to
+	see what is happening when.  Meh.  More cooler would be
+	screen-shots or transforming something into a video (or at
+	least dumping the frames from an animation to use with
+	ffmpeg, since doing it in the program would just be an
+	automation of this).
+
+
+If you have any questions, comments, concerns, bitches, gripes,
+complaints, please write to: nathan.s.chappell@gmail.com and put
+"Complex-Drawer" in the subject line.
+
+Peace
