@@ -13,6 +13,11 @@
 
 using namespace std;
 
+C variable_z;
+C slider_a;
+C slider_b;
+C slider_c;
+
 enum class Function {
     kAbs, kArg, kCos, kExp, kLog, kSin, kTan, kReal,
     kImag, kNorm, kConj, kAcos, kAsin, kAtan, kCosh, kSinh,

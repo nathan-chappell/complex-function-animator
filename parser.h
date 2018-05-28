@@ -1,4 +1,5 @@
 //parser.h
+#pragma once
 
 #include <complex>
 #include <string>
